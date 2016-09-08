@@ -1,0 +1,47 @@
+# == Schema Information
+#
+# Table name: groups
+#
+#  id                :integer          not null, primary key
+#  name              :string(255)
+#  points            :integer
+#  member1           :string(255)
+#  member2           :string(255)
+#  member3           :string(255)
+#  member4           :string(255)
+#  natel1            :integer
+#  natel2            :integer
+#  natel3            :integer
+#  natel4            :integer
+#  false_information :boolean
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  points: 1
+  member1: MyString
+  member2: MyString
+  member3: MyString
+  member4: MyString
+  natel1: 1
+  natel2: 1
+  natel3: 1
+  natel4: 1
+  false_information: false
+
+two:
+  name: MyString
+  points: 1
+  member1: MyString
+  member2: MyString
+  member3: MyString
+  member4: MyString
+  natel1: 1
+  natel2: 1
+  natel3: 1
+  natel4: 1
+  false_information: false

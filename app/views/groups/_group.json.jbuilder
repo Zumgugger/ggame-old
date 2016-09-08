@@ -1,0 +1,2 @@
+json.extract! group, :id, :name, :points, :member1, :member2, :member3, :member4, :natel1, :natel2, :natel3, :natel4, :false_information, :created_at, :updated_at
+json.url group_url(group, format: :json)

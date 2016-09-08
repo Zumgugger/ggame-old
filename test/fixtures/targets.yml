@@ -1,0 +1,32 @@
+# == Schema Information
+#
+# Table name: targets
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  description :string(255)
+#  points      :integer
+#  mines       :integer          default(0)
+#  count       :integer          default(0)
+#  last_action :datetime
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  points: 1
+  mines: 1
+  count: 1
+  last_action: 2016-09-03 12:39:25
+
+two:
+  name: MyString
+  description: MyString
+  points: 1
+  mines: 1
+  count: 1
+  last_action: 2016-09-03 12:39:25

@@ -1,0 +1,40 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id                  :integer          not null, primary key
+#  time                :datetime
+#  group_id            :integer
+#  noticed             :boolean
+#  points_set          :integer
+#  target_id           :integer
+#  description         :string(255)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  target_group_id     :integer
+#  group_points        :integer
+#  target_points       :integer
+#  target_group_points :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time: 2016-09-03 13:26:15
+  actor: one
+  option: one
+  noticed: false
+  points_set: 1
+  target_group: one
+  target: one
+  description: MyString
+
+two:
+  time: 2016-09-03 13:26:15
+  actor: two
+  option: two
+  noticed: false
+  points_set: 1
+  target_group: two
+  target: two
+  description: MyString
