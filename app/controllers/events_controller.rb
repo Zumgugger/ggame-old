@@ -47,7 +47,7 @@ class EventsController < ApplicationController
     @target_group = Group.find(event_params[:target_group_id]) if event_params[:target_group_id]
     
     if  @event.option.name == "hat Posten geholt"
-        @last_time = Event.where(option: 1, group: @group, target: @target).last
+            @last_time = Event.where(option: @event.option, group: @group, target: @target).last
          if @last_time
              @event.group_points = 0 
              @event.description = "schon geholt"
@@ -62,8 +62,13 @@ class EventsController < ApplicationController
          end
         
     elsif @event.option.name == "hat Mine gesetzt"
-        @event.group_points =   - @event.points_set
-        @target.mines += 2*@event.group_points
+        if @event.group.points < @event.points_set
+            @event.description = "zu teuer"
+            @event.group_points = 0
+        else
+            @event.group_points =   - @event.points_set
+            @target.mines += 2*@event.group_points
+        end
         
     elsif @event.option.name == "hat Gruppe fotografiert"
         @last_foto_event = Event.where(option: @event.option, target_group: @group, group: @target_group).last
@@ -76,8 +81,11 @@ class EventsController < ApplicationController
         if @last_foto
         @time2 = @last_foto.time
         end
-                  
-            if (@time + 60.minutes > Time.now || @time2 + 60.minutes > Time.now)
+            if @event.group == @event.target_group
+                @event.description = "eigene Gruppe"
+                @event.group_points = 0
+                @event.target_points = 0 
+            elsif (@time + 60.minutes > Time.now || @time2 + 60.minutes > Time.now)
                 @event.description = "zu früh"
                 @event.group_points = 0
                 @event.target_points = 0
@@ -88,9 +96,28 @@ class EventsController < ApplicationController
             end
         
         
-    elsif @event.option.name == ("hat sondiert" || "hat spioniert")
-        @event.group_points = -50
-        @event.description = "Mine vorhanden" if @target.mines != 0 
+    elsif @event.option.name == "hat sondiert"
+        if @event.group.points < 50
+            @event.description = "zu teuer"
+            @event.group_points = 0
+        else
+            @event.group_points = -50
+            @event.description = "Mine vorhanden" if @target.mines != 0 
+        end
+        
+    elsif @event.option.name =="hat spioniert"
+        if @event.group.points < 50
+            @event.description = "zu teuer"
+            @event.group_points = 0
+        elsif @event.group == @event.target_group
+            @event.description = "eigene Gruppe"
+            @event.group_points = 0
+        else
+            @event.group_points = -50
+            @event.description = "Spionage!"
+        end
+        
+        
         
     elsif @event.option.name == "hat Foto bemerkt"
         @option = Option.where(name: "hat Gruppe fotografiert")
@@ -100,8 +127,12 @@ class EventsController < ApplicationController
         if @last_foto_event
         @time = @last_foto_event.time
         end
-        if @time + 600.seconds < Time.now
-            @event.description = "zu spät"
+        if @group == @target_group
+            @event.description = "eigene Gruppe"
+            @event.group_points = 0
+            @event.target_points = 0
+        elsif @time + 600.seconds < Time.now
+            @event.description = "zu spät bzw. falsche Gruppe"
             @event.group_points = 0
             @event.target_points = 0
         else

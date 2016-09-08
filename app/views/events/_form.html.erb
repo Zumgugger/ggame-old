@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= f.label "Akteur" %>
-    <%= f.collection_select(:group_id, @groups, :id, :name) %>
+    <%= f.collection_select(:group_id, @groups.order('name  ASC'), :id, :name) %>
   </div>
 
   <div class="field" id="action">
     <%= f.label "Aktion" %>
-    <%= f.collection_select(:option_id, @options, :id, :name) %>
+    <%= f.collection_select(:option_id, @options.order('name ASC'), :id, :name) %>
   </div>
 
   <div class="field" id="minepoints" >
@@ -28,7 +28,7 @@
 
   <div class="field" id="target_group">
     <%= f.label "Ziel" %>
-    <%= f.collection_select( :target_group_id, @groups, :id, :name)%>
+    <%= f.collection_select( :target_group_id, @groups.order('name ASC'), :id, :name)%>
   </div>
 
   <div class="field" id="target">
