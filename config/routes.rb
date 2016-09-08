@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+  root to: 'events#main'
   resources :events
   resources :options
   resources :groups

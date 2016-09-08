@@ -8,6 +8,13 @@ class EventsController < ApplicationController
     @events = Event.all
     @title = "Events"
   end
+    
+  def main
+    @events = Event.last(12)
+    @groups = Group.order(:name).all[1..-1].sort! {|a,b| a.points <=> b.points}.reverse
+    @title = "Control Room"
+    @targets = Target.all
+  end
 
   # GET /events/1
   # GET /events/1.json
@@ -59,9 +66,8 @@ class EventsController < ApplicationController
         @target.mines += 2*@event.group_points
         
     elsif @event.option.name == "hat Gruppe fotografiert"
-        
-        @last_foto_event = Event.where(option: 2, target_group: @group, group: @target_group).last
-        @last_foto = Event.where(option: 2, target_group: @target_group, group: @group).last
+        @last_foto_event = Event.where(option: @event.option, target_group: @group, group: @target_group).last
+        @last_foto = Event.where(option: @event.option, target_group: @target_group, group: @group).last
         @time = @time2 = Time.now - 100.minutes 
             
         if @last_foto_event
@@ -87,7 +93,8 @@ class EventsController < ApplicationController
         @event.description = "Mine vorhanden" if @target.mines != 0 
         
     elsif @event.option.name == "hat Foto bemerkt"
-        @last_foto_event = Event.where(option: 2, target_group: @group, group: @target_group).last
+        @option = Option.where(name: "hat Gruppe fotografiert")
+        @last_foto_event = Event.where(option: @option, target_group: @group, group: @target_group).last
         @time = Time.now - 100.minutes 
             
         if @last_foto_event
@@ -119,7 +126,7 @@ class EventsController < ApplicationController
         @group.save if @group.name != 0 
         @target_group.save
         @target.save
-        format.html { redirect_to events_path, notice: 'Event was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }

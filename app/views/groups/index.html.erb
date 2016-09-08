@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Groups</h1>
+<h1>Gruppen</h1>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Points</th>
+      <th>Punkte</th>
       <th>Member1</th>
       <th>Member2</th>
       <th>Member3</th>
@@ -15,7 +15,7 @@
       <th>Natel2</th>
       <th>Natel3</th>
       <th>Natel4</th>
-      <th>False information</th>
+      <th>Falschinformation</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -33,7 +33,7 @@
         <td><%= group.natel2 %></td>
         <td><%= group.natel3 %></td>
         <td><%= group.natel4 %></td>
-        <td><%= group.false_information %></td>
+        <td><%= group.false_information ? "ja!" : "nein" %></td>
         <td><%= link_to 'Show', group %></td>
         <td><%= link_to 'Edit', edit_group_path(group) %></td>
         <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>

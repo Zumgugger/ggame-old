@@ -12,27 +12,27 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %>
+    <%= f.label "Name" %>
     <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    <%= f.label :description %>
+    <%= f.label "Beschrieb" %>
     <%= f.text_field :description %>
   </div>
 
   <div class="field">
-    <%= f.label :points %>
+    <%= f.label "Punkte" %>
     <%= f.number_field :points %>
   </div>
 
   <div class="field">
-    <%= f.label :mines %>
+    <%= f.label "Minen" %>
     <%= f.number_field :mines %>
   </div>
 
   <div class="field">
-    <%= f.label :count %>
+    <%= f.label "Count" %>
     <%= f.number_field :count %>
   </div>
 
@@ -42,6 +42,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Posten erstellen" %>
   </div>
 <% end %>
