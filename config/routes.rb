@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'resets/target_count' => 'resets#target_count'
   post 'resets/group_reset' => 'resets#group_reset'
   post 'resets/target_reset' => 'resets#target_reset'
+  post 'resets/delete_events' => 'resets#delete_events'
  
   root to: 'events#main'
   resources :events
