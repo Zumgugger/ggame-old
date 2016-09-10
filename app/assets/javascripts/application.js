@@ -59,10 +59,27 @@ $(window).load(function() {
     }); 
     
     $('#action').change(function () {
+        if ($('#action option:selected').text() == "Spionageabwehr"){
+            $('#minepoints').hide();
+            $('#target').hide();
+            $('#target_group').hide();
+        }
+    });
+    
+    $('#action').change(function () {
         if ($('#action option:selected').text() == "hat Foto bemerkt"){
             $('#minepoints').hide();
             $('#target').hide();
             $('#target_group').show();
         }
     }); 
+    
+    $('#action').change(function () {
+        if ($('#action option:selected').text() == "hat Kopfgeld gesetzt"){
+            $('#minepoints').show();
+            $('#target').hide();
+            $('#target_group').show();
+        }
+    }); 
 });
+

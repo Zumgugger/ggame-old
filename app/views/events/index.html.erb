@@ -31,6 +31,12 @@
             <%elsif %>
             <%event.option.name=="hat Foto bemerkt" %>
             <%= event.target_group.name %>
+            <%elsif %>
+            <%event.option.name=="hat spioniert" %>
+            <%= event.target_group.name %>
+            <%elsif %>
+            <%event.option.name=="hat Kopfgeld gesetzt" %>
+            <%= event.target_group.name %>
             <%else %>
             <%= event.target.name %>
             <%end%>

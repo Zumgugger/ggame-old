@@ -15,6 +15,7 @@
 #  group_points        :integer
 #  target_points       :integer
 #  target_group_points :integer
+#  option_id           :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

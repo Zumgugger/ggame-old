@@ -52,6 +52,13 @@ class GroupsController < ApplicationController
       end
     end
   end
+    
+  def reset_group_points
+      @groups = Group.all
+      Group.update_all("points = 0")
+      redirect_to groups_path
+  end
+
 
   # DELETE /groups/1
   # DELETE /groups/1.json

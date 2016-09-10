@@ -16,6 +16,7 @@
 #  false_information :boolean
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  kopfgeld          :integer          default(0)
 #
 
 class Group < ApplicationRecord

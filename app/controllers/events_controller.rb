@@ -51,8 +51,6 @@ class EventsController < ApplicationController
          if @last_time
              @event.group_points = 0 
              @event.description = "schon geholt"
-             puts "="
-             puts @last_time
          else
             @event.group_points =   @target.points + @target.mines
             @event.group_points += 100 if @target.count ==  0
@@ -91,6 +89,11 @@ class EventsController < ApplicationController
                 @event.target_points = 0
             else
                 @event.group_points = 400
+                if @event.target_group.kopfgeld != 0
+                    @event.group_points += @event.target_group.kopfgeld
+                    @target_group.kopfgeld = 0 
+                    @event.description = "Kopfgeld geholt"
+                end
                 @event.target_points = -400
                 @target_group.points += @event.target_points
             end
@@ -112,11 +115,26 @@ class EventsController < ApplicationController
         elsif @event.group == @event.target_group
             @event.description = "eigene Gruppe"
             @event.group_points = 0
+        elsif @event.target_group.false_information == true
+            @event.description = "Falschinformation!"
+            @event.group_points = -50
+            @target_group.false_information = false
         else
             @event.group_points = -50
             @event.description = "Spionage!"
         end
         
+    elsif @event.option.name =="Spionageabwehr"
+        if @event.group.points < 300
+            @event.description = "zu teuer"
+            @event.group_points = 0
+        elsif @event.group.false_information == true
+            @event.description = "bereits vorhanden"
+            @event.group_points = 0    
+        else
+            @event.group_points = -300
+            @event.group.false_information = true
+        end
         
         
     elsif @event.option.name == "hat Foto bemerkt"
@@ -140,7 +158,20 @@ class EventsController < ApplicationController
             @event.target_points = -200
             @target_group.points += @event.target_points
         end
+        
+    elsif @event.option.name == "hat Kopfgeld gesetzt"
+        if @event.group.points < @event.points_set
+            @event.description = "zu teuer"
+            @event.group_points = 0
+        else
+            @event.group_points =   - @event.points_set
+            @target_group.kopfgeld += @event.points_set
+        end
+    
+    
     end 
+      
+ 
       
          
     @group.points += @event.group_points

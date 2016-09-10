@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160904150740) do
+ActiveRecord::Schema.define(version: 20160909151312) do
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "time"
@@ -44,8 +44,9 @@ ActiveRecord::Schema.define(version: 20160904150740) do
     t.integer  "natel3"
     t.integer  "natel4"
     t.boolean  "false_information"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "kopfgeld",          default: 0
   end
 
   create_table "options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

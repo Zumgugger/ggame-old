@@ -15,6 +15,7 @@
 #  group_points        :integer
 #  target_points       :integer
 #  target_group_points :integer
+#  option_id           :integer
 #
 
 require 'test_helper'

@@ -6,11 +6,11 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Description</th>
-      <th>Points</th>
-      <th>Mines</th>
+      <th>Beschrieb</th>
+      <th>Punkte</th>
+      <th>Minen</th>
       <th>Count</th>
-      <th>Last action</th>
+      <th>Letzte Aktion</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,7 +23,7 @@
         <td><%= target.points %></td>
         <td><%= target.mines %></td>
         <td><%= target.count %></td>
-        <td><%= target.last_action %></td>
+        <td><%= target.last_action.strftime("%H:%M:%S") %></td>
         <td><%= link_to 'Show', target %></td>
         <td><%= link_to 'Edit', edit_target_path(target) %></td>
         <td><%= link_to 'Destroy', target, method: :delete, data: { confirm: 'Are you sure?' } %></td>

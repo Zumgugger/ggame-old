@@ -22,14 +22,22 @@
       <tr>
         <td><%= event.time ? event.time.strftime("%H:%M:%S") : "-" %></td>
         <td><%= event.group.name %></td>       
-        <td><%= event.option.name %></td>            
-        <td><%= event.description %></td>
+        <td><%= event.option.name %></td> 
+          
+            <td><%= event.description %></td>
+          
         <td>
             <%if%>
             <% event.option.name=="hat Gruppe fotografiert"%>
             <%= event.target_group.name %>
             <%elsif %>
             <%event.option.name=="hat Foto bemerkt" %>
+            <%= event.target_group.name %>
+            <%elsif %>
+            <%event.option.name=="hat spioniert" %>
+            <%= event.target_group.name %>
+            <%elsif %>
+            <%event.option.name=="hat Kopfgeld gesetzt" %>
             <%= event.target_group.name %>
             <%else %>
             <%= event.target.name %>
@@ -58,6 +66,7 @@
     <tr>
       <th>Name</th>
       <th>Punkte</th>
+      <th>Kopfegeld</th>
       <th>Mitglieder</th>
       <th>Falschinformation</th>
       <th colspan="3"></th>
@@ -69,6 +78,7 @@
       <tr>
         <td><%= group.name %></td>
         <td><%= group.points %></td>
+        <td><%= group.kopfgeld %></td>
         <td><%= group.member1 %> <%= group.member2 %> <%= group.member3 %> <%= group.member4 %></td>
         <td><%= group.false_information ? "ja!" : "nein"%></td>
         <td><%= link_to 'Show', group %></td>

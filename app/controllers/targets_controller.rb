@@ -52,6 +52,12 @@ class TargetsController < ApplicationController
       end
     end
   end
+    
+  def reset_target_count
+      @targets = Target.all
+      Target.update_all("count = 0")
+      redirect_to targets_path
+  end
 
   # DELETE /targets/1
   # DELETE /targets/1.json
