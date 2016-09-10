@@ -25,14 +25,14 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @groups = Group.all.order(:sort_order)
-    @options = Option.all
+    @options = Option.where(:active => true)
     @targets = Target.all.order(:sort_order)
   end
 
   # GET /events/1/edit
   def edit
     @groups = Group.all.order(:sort_order)
-    @options = Option.all
+    @options = Option.where(:active => true)
     @targets = Target.all.order(:sort_order)
   end
 
@@ -168,6 +168,14 @@ class EventsController < ApplicationController
             @target_group.kopfgeld += @event.points_set
         end
     
+    elsif @event.option.name == "hat Mine entschärft"
+        if @event.group.points < 50
+            @event.description = "zu teuer"
+            @event.group_points = 0
+        else
+            @event.group_points =   -50
+            @target.mines = 0
+        end
     
     end 
       

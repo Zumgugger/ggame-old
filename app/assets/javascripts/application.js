@@ -81,5 +81,13 @@ $(window).load(function() {
             $('#target_group').show();
         }
     }); 
+    
+    $('#action').change(function () {
+        if ($('#action option:selected').text() == "hat Mine entschärft"){
+            $('#minepoints').hide();
+            $('#target').show();
+            $('#target_group').hide();
+        }
+    }); 
 });
 
