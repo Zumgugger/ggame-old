@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160909151312) do
+ActiveRecord::Schema.define(version: 20160910140755) do
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "time"
@@ -34,19 +34,20 @@ ActiveRecord::Schema.define(version: 20160909151312) do
 
   create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.integer  "points"
+    t.integer  "points",            default: 0
     t.string   "member1"
     t.string   "member2"
     t.string   "member3"
     t.string   "member4"
-    t.integer  "natel1"
-    t.integer  "natel2"
-    t.integer  "natel3"
-    t.integer  "natel4"
+    t.string   "natel1"
+    t.string   "natel2"
+    t.string   "natel3"
+    t.string   "natel4"
     t.boolean  "false_information"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "kopfgeld",          default: 0
+    t.integer  "sort_order"
   end
 
   create_table "options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -65,6 +66,8 @@ ActiveRecord::Schema.define(version: 20160909151312) do
     t.datetime "last_action"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.string   "village"
+    t.integer  "sort_order"
   end
 
   add_foreign_key "events", "groups"

@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     
   def main
     @events = Event.last(12)
-    @groups = Group.order(:name).all[1..-1].sort! {|a,b| a.points <=> b.points}.reverse
+    @groups = Group.order(sort_order: :desc).all[1..-1].sort! {|a,b| a.points <=> b.points}.reverse
     @title = "Control Room"
     @targets = Target.all
   end
@@ -24,16 +24,16 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    @groups = Group.all.order(:name)
+    @groups = Group.all.order(:sort_order)
     @options = Option.all
-    @targets = Target.all.order(:name)
+    @targets = Target.all.order(:sort_order)
   end
 
   # GET /events/1/edit
   def edit
-    @groups = Group.all.order(:name)
+    @groups = Group.all.order(:sort_order)
     @options = Option.all
-    @targets = Target.all.order(:name)
+    @targets = Target.all.order(:sort_order)
   end
 
   # POST /events
@@ -177,9 +177,9 @@ class EventsController < ApplicationController
     @group.points += @event.group_points
     @target.last_action = Time.now
         
-    @groups = Group.all.order(:name)
+    @groups = Group.all.order(:sort_order)
     @options = Option.all.order(:name)
-    @targets = Target.all.order(:name)
+    @targets = Target.all.order(:sort_order)
       
     
 
@@ -200,9 +200,9 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    @groups = Group.all.order(:name)
+    @groups = Group.all.order(:sort_order)
     @options = Option.all
-    @targets = Target.all.order(:name)
+    @targets = Target.all.order(:sort_order)
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }

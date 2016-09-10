@@ -41,6 +41,11 @@
     <%= f.datetime_select :last_action %>
   </div>
 
+  <div class="field">
+    <%= f.label :sort_order %>
+    <%= f.number_field :sort_order %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Posten erstellen" %>
   </div>

@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label "Akteur" %>
-    <%= f.collection_select(:group_id, @groups.order(name: :asc), :id, :name) %>
+    <%= f.collection_select(:group_id, @groups.order(sort_order: :asc), :id, :name) %>
   </div>
 
   <div class="field" id="action">

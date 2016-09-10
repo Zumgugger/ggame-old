@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all.order(:name)
+    @groups = Group.all.order(:sort_order)
     @title = "Gruppen"
   end
 
@@ -78,6 +78,6 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit(:name, :points, :member1, :member2, :member3, :member4, :natel1, :natel2, :natel3, :natel4, :false_information)
+      params.require(:group).permit(:name, :points, :member1, :member2, :member3, :member4, :natel1, :natel2, :natel3, :natel4, :false_information, :sort_order)
     end
 end

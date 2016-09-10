@@ -1,21 +1,44 @@
 <h1>Resets BE CAREFUL!</h1>
 
 
-<%= form_tag resets_target_count_path do %>
-	  <%= submit_tag "Posten Count auf 0 setzen"%>
+    <%= form_tag resets_target_count_path do %>
+	   <%= submit_tag "Posten Count auf 0 setzen"%>
 	<%end%>
 <br />
+<hr />
 
-<%= form_tag resets_group_reset_path do %>
-	  <%= submit_tag "Gruppen auf 0 setzen"%>
+    <%= form_tag resets_group_reset_path do %>
+        <%= submit_tag "Gruppen auf 0 setzen"%>
 	<%end%>
-<br /> 
-<%= form_tag resets_target_reset_path do %>
-	  <%= submit_tag "Minen auf 0 setzen"%>
+<br />
+<hr />
+    <%= form_tag resets_target_reset_path do %>
+        <%= submit_tag "Minen auf 0 setzen"%>
 	<%end%>
 
 
-<br /> 
-<%= form_tag resets_delete_events_path do %>
-	  <%= submit_tag "Alle Events löschen"%>
+<br />
+<hr /> 
+    <%= form_tag resets_delete_events_path do %>
+        <%= submit_tag "Alle Events löschen"%>
 	<%end%>
+
+<br />
+<hr />
+    <%= form_tag resets_import_targets_path, multipart: true  do %>
+        <%= file_field_tag :file%>
+        <%= submit_tag "Postenliste importieren"%>
+	<%end%>
+<p> Remember to add a empty Group (javascript-hidden input field) </p>
+<p>Excel File muss genau dieselben Überschriften haben in der ersten Reihe wie die Attribute der Posten: "name", "village", "description", "points" </p>
+<br />
+<hr />
+
+<%= form_tag resets_import_groups_path, multipart: true  do %>
+        <%= file_field_tag :file%>
+        <%= submit_tag "Gruppenliste importieren"%>
+	<%end%>
+<p> Remember to add a empty Group (javascript-hidden input field) </p>
+<p>Excel File muss genau dieselben Überschriften haben in der ersten Reihe wie die Attribute der Posten: "name", "member1", "member2", "member3", "member4", "natel1", "natel2", "natel3", "natel4" </p>
+<br />
+<hr />

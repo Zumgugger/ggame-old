@@ -25,6 +25,15 @@ class ResetsController < ApplicationController
       redirect_to root_path 
   end  
     
+  def import_targets
+    Target.import(params[:file])
+    redirect_to targets_path
+  end
+    
+  def import_groups
+    Group.import(params[:file])
+    redirect_to groups_path
+  end
 end
 
         

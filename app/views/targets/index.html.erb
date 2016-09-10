@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Ort</th>
       <th>Beschrieb</th>
       <th>Punkte</th>
       <th>Minen</th>
@@ -19,6 +20,7 @@
     <% @targets.each do |target| %>
       <tr>
         <td><%= target.name %></td>
+        <td><%= target.village %></td>
         <td><%= target.description %></td>
         <td><%= target.points %></td>
         <td><%= target.mines %></td>

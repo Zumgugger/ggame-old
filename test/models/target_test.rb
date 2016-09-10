@@ -11,6 +11,8 @@
 #  last_action :datetime
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  village     :string(255)
+#  sort_order  :integer
 #
 
 require 'test_helper'

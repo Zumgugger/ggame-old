@@ -4,7 +4,7 @@ class TargetsController < ApplicationController
   # GET /targets
   # GET /targets.json
   def index
-    @targets = Target.all.order(:name)
+    @targets = Target.all.order(:name).to_ary.sort_by {|t| ary = t.name.split(" ").map(&:to_i).inject(&:+)}
       @title = "Posten"
       
   end
@@ -77,6 +77,6 @@ class TargetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def target_params
-      params.require(:target).permit(:name, :description, :points, :mines, :count, :last_action)
+      params.require(:target).permit(:name, :description, :points, :mines, :count, :last_action, :sort_order)
     end
 end
