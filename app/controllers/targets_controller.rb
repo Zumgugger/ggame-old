@@ -4,7 +4,7 @@ class TargetsController < ApplicationController
   # GET /targets
   # GET /targets.json
   def index
-    @targets = Target.all.order(:name).to_ary.sort_by {|t| ary = t.name.split(" ").map(&:to_i).inject(&:+)}
+    @targets = Target.all.order(:sort_order)
       @title = "Posten"
       
   end
