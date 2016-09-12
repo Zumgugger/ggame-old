@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+
+["-", "hat Posten geholt", "hat Gruppe fotografiert", "hat Foto bemerkt", "hat spioniert", "hat sondiert", "hat Kopfgeld gesetzt", "Spionageabwehr", "hat Mine gesetzt", "hat Mine entschärft"].each {|o| Option.new(name: o).save }

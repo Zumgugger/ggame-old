@@ -14,7 +14,7 @@ default: &default
   encoding: utf8
   pool: 5
   username: ggame
-  password:
+  password: xene9u9eli
   socket: /var/run/mysqld/mysqld.sock
 
 development:
@@ -51,4 +51,4 @@ production:
   <<: *default
   database: ggame_production
   username: ggame
-  password: <%= ENV['GGAME_DATABASE_PASSWORD'] %>
+  password: xene9u9eli

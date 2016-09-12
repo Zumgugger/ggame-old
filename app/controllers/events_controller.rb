@@ -109,13 +109,22 @@ class EventsController < ApplicationController
         end
         
     elsif @event.option.name =="hat spioniert"
+        @last_spionage_event = Event.where(option: @event.option, target_group: @target_group, group: @group).last
+        @time = Time.now - 100.minutes 
+        if @last_spionage_event
+        @time = @last_spionage_event.time
+        end
         if @event.group.points < 50
             @event.description = "zu teuer"
             @event.group_points = 0
         elsif @event.group == @event.target_group
             @event.description = "eigene Gruppe"
             @event.group_points = 0
-        elsif @event.target_group.false_information == true
+        elsif (@time+60.minutes > Time.now)
+            @event.group.points = 0
+            @event.description = "zu früh"
+        elsif
+        @event.target_group.false_information == true
             @event.description = "Falschinformation!"
             @event.group_points = -50
             @target_group.false_information = false

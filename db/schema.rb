@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20160910145204) do
 
-  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.datetime "time"
     t.integer  "group_id"
     t.boolean  "noticed"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20160910145204) do
     t.index ["target_id"], name: "index_events_on_target_id", using: :btree
   end
 
-  create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.integer  "points",            default: 0
     t.string   "member1"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20160910145204) do
     t.integer  "sort_order"
   end
 
-  create_table "options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "options", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.integer  "count"
     t.datetime "created_at",                null: false
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20160910145204) do
     t.boolean  "active",     default: true
   end
 
-  create_table "targets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "targets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.string   "description"
     t.integer  "points"
