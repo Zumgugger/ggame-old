@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     
   def main
     @events = Event.last(12)
-    @groups = Group.order(sort_order: :desc).all[1..-1].sort! {|a,b| a.points <=> b.points}.reverse
+    @groups = Group.order(name: :desc).all[0..-1].sort! {|a,b| a.points <=> b.points}.reverse
     @title = "Control Room"
     @targets = Target.all
   end
@@ -23,7 +23,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
+    @event = Evesnt.new
     @groups = Group.all.order(:sort_order)
     @options = Option.where(:active => true)
     @targets = Target.all.order(:sort_order)
