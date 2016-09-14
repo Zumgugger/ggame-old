@@ -23,7 +23,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Evesnt.new
+    @event = Event.new
     @groups = Group.all.order(:sort_order)
     @options = Option.where(:active => true)
     @targets = Target.all.order(:sort_order)
